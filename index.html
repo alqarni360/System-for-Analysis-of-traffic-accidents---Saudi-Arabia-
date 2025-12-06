@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>منصة تحليل كثافة الحوادث</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">A</div>
+        <div>
+          <h1>منصة تحليل كثافة الحوادث</h1>
+          <div class="lead">لدعم اتخاذ القرار في المدن</div>
+        </div>
+      </div>
+
+      <div class="file-uploader">
+        <label for="pdfFiles" class="file-upload-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          <span>اختر ملفات PDF أو ZIP</span>
+        </label>
+        <input id="pdfFiles" type="file" accept=".pdf,.zip" multiple />
+        <span id="fileName" class="file-name">لم يتم اختيار ملفات</span>
+      </div>
+      <button id="btnProcess" class="btn">معالجة الملفات</button>
+      <div id="status" style="margin-top:10px;color:#ffd7f5;font-size:13px;text-align:center;">جاهز للمعالجة</div>
+
+      <div class="stat">
+        <div>إجمالي الحوادث<strong id="totalCount">0</strong></div>
+        <div>نقاط اشتعال<strong id="hotspotsCount">0</strong></div>
+      </div>
+
+      <div id="aiAnalysisContainer" style="display: none;">
+        <button id="btnAnalyzeAI" class="btn">تحليل الأنماط بالذكاء الاصطناعي</button>
+        <div id="aiResult"></div>
+      </div>
+
+
+      <div class="legend">
+        <div class="legend-item">
+          <div class="sw low"></div><div class="lead" style="margin:0">منخفض &lt;100</div>
+        </div>
+        <div class="legend-item">
+          <div class="sw mid"></div><div class="lead" style="margin:0">متوسط 100-500</div>
+        </div>
+        <div class="legend-item">
+          <div class="sw crit"></div><div class="lead" style="margin:0">عالي &gt;500</div>
+        </div>
+      </div>
+
+      <div class="hotspot-section">
+        <h4>أهم المواقع</h4>
+        <div id="hotspotList" class="hotspot-list"></div>
+      </div>
+      
+      <button id="exportCSV" class="export-btn">تصدير نقاط الاشتغال (CSV)</button>
+
+    </aside>
+
+    <main>
+      <div id="map"></div>
+    </main>
+  </div>
+
+  <!-- libs -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+  <!-- App Script -->
+  <script src="js/main.js"></script>
+</body>
+</html>
