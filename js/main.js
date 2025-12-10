@@ -190,7 +190,7 @@
 
     // IMPORTANT: In a real-world application, this key should be handled securely
     // and not exposed on the client-side.
-    const apiKey = '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';
+    const apiKey = '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';
     const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
 
     const systemPrompt = `You are an expert urban safety planner and traffic analyst advising a government ministry.
